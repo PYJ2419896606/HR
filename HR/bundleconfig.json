@@ -1,0 +1,14 @@
+[
+  {
+    "outputFileName": "wwwroot/my.js",
+    "inputFiles": [
+      "wwwroot/jquery/jquery.validate.js",
+      "wwwroot/jquery/jquery.validate.js",
+      "wwwroot/jquery/jquery.validate.unobtrusive.min.js",
+      "wwwroot/jquery/jquery-1.10.2.js",
+      "wwwroot/jquery/jquery-1.11.1.js",
+      "wwwroot/jquery/vue.js"
+    ],
+    "minify": {"enabled": true}
+  }
+]
