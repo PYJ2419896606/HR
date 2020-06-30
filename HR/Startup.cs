@@ -9,6 +9,10 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using EFEntity;
 using Microsoft.Extensions.Configuration;
+using IDAO;
+using IBLL;
+using DAO;
+using BLL;
 
 namespace HR
 {
@@ -23,6 +27,9 @@ namespace HR
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
+            
+            services.AddTransient<ILoginDAO, LoginDAO>();
+            services.AddTransient<ILoginBLL, LoginBLL>();
             services.AddControllersWithViews();
             var conStr = configuration.GetConnectionString("SqlServerConnection");
             services.AddDbContext<HR_DBDbContent>();
@@ -36,15 +43,15 @@ namespace HR
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseRouting();
-
             app.UseStaticFiles();
+
+            app.UseRouting();
 
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
                      name: "default",
-                     pattern: "{controller=Text}/{action=Index}/{id?}");
+                     pattern: "{controller=Login}/{action=Index}/{id?}");
             });
         }
     }
